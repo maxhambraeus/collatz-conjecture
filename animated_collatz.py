@@ -8,7 +8,7 @@ y = []
 fig = plt.figure()
 ax = plt.axes() 
 
-framerate = 60
+framerate = 30
 
 number = int(input("enter a number: "))
 
