@@ -3,8 +3,9 @@ from random import randint
 from matplotlib.animation import FuncAnimation
 import argparse
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser()#set command line args
 parser.add_argument("-f", "--framerate", default=60, type=int, help="set framerate")
+parser.add_argument("-s", "--save", help="specifies filename and saves video")
 args = parser.parse_args()
 
 x = []
@@ -31,7 +32,7 @@ def collatz(number): #returns a list of numbers using the input as source
 
 def animate(frame, *fargs):#plots the numbers, one by one
 	x.append(frame)
-	y.append(numbers[frame])#
+	y.append(numbers[frame])
 
 	ax.clear()
 	ax.plot(x, y)
@@ -40,6 +41,7 @@ numbers = collatz(number)
 
 ani = FuncAnimation(fig, animate, fargs=numbers, frames=len(numbers), interval=1000/framerate, repeat=False) #renders the animation 
 
-plt.show()
-
-
+if args.save: #if --save is specified save as mp4, else show animation
+	ani.save(args.save)
+else:
+	plt.show()
