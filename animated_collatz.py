@@ -1,14 +1,18 @@
 import matplotlib.pyplot as plt
 from random import randint
 from matplotlib.animation import FuncAnimation
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--framerate", default=60, type=int, help="set framerate")
+args = parser.parse_args()
 
 x = []
 y = []
-
 fig = plt.figure()
 ax = plt.axes() 
+framerate = args.framerate
 
-framerate = 30
 
 number = int(input("enter a number: "))
 
